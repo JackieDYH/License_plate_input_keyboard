@@ -1,0 +1,10 @@
+<!--test1.wxml-->
+<!-- <view class='test' catchtap="close" style='height:999px;'>
+  <button catchtap='open'>{{territory}}</button>
+  <button catchtap='openInput'>{{plateNo?plateNo:'点击输入'}}</button>
+  <button bindtap='select'>查询</button>
+</view> -->
+<view bindtap="open">{{plate?plate:'点击输入'}}</view>
+
+
+<v-panel is-show="{{isShow}}" bindok="inputOk" binddelete="delete" bindinputchange="click" bindok="ok" key-board-type="{{keyBoardType}}" backgroundColor="white" />

@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "keyboard": "/vehicle-panel/keyboard/keyboard"
+  }
+}

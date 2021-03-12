@@ -1,0 +1,49 @@
+<view class='mask no-bg' wx:if="{{masker && show}}" bindtap='_onHide'></view>
+<view class='popup {{show ? "popup-enter" : ""}}'>
+  <!-- 车牌键盘start -->
+  <view wx:if="{{kbType == 'plate'}}">
+    <view class='kb-pro' wx:if="{{!str}}">
+      <view class="vw">
+        <block wx:for="{{provArr}}" wx:key="index">
+          <button class="btn" data-i="{{item}}" bindtap='_onKey' wx:if="{{index <= 9}}" hover-class="hover-class">{{item}}</button>
+        </block>
+      </view>
+      <view class="vw">
+        <block wx:for="{{provArr}}" wx:key="index">
+          <button class="btn" data-i="{{item}}" bindtap='_onKey' wx:if="{{index >= 10 && index <= 18}}" hover-class="hover-class">{{item}}</button>
+        </block>
+      </view>
+      <view class="vw">
+        <block wx:for="{{provArr}}" wx:key="index">
+          <button class="btn" data-i="{{item}}" bindtap='_onKey' wx:if="{{index >= 19 && index <= 26}}" hover-class="hover-class">{{item}}</button>
+        </block>
+      </view>
+      <view class="vw">
+        <block wx:for="{{provArr}}" wx:key="index">
+          <button class="btn" data-i="{{item}}" bindtap='_onKey' wx:if="{{index > 26}}" hover-class="hover-class">{{item}}</button>
+        </block>
+      </view>
+    </view>
+    <view class='fx fw kb' wx:else>
+      <block wx:for="{{numArr}}" wx:key="index">
+        <button class="btn" data-i="{{item}}" disabled='{{str.length < 2}}' bindtap='_onKey' hover-class="hover-class">{{item}}</button>
+      </block>
+      <block wx:for="{{lettArr}}" wx:key="index">
+        <button class="btn" data-i="{{item}}" disabled='{{(index == 25 || index == 26) && (str[0] + str[1] != "粤Z")}}' bindtap='_onKey' hover-class="hover-class">{{item}}</button>
+      </block>
+    </view>
+    <button class='fx jc-cnt btn-del ab' data-i="-1" bindtap='_onKey' hover-class="hover-class">
+    </button>
+  </view>
+  <!-- 车牌键盘end -->
+
+  <!-- 纯数字键盘start -->
+  <view class='fx jc-fe fw kb num-only' wx:if="{{kbType == 'num' || kbType == 'num_dot'}}">
+    <block wx:for="{{numArr}}" wx:key="index">
+      <button class="btn" data-i="{{item}}" bindtap='_onKey' hover-class="hover-class">{{item}}</button>
+    </block>
+    <button class='fx jc-cnt btn bg-ad' data-i="-1" bindtap='_onKey' hover-class="hover-class">
+    </button>
+  </view>
+  <!-- 纯数字键盘end -->
+</view>

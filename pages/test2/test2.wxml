@@ -1,0 +1,3 @@
+<!-- 引入车牌键盘 -->
+
+<keyboard id="kb" param="{{kb}}" bind:keyEvt="onKey"></keyboard>
